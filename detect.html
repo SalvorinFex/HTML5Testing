@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang = "en"
+      class = "no-js">
+<head>
+  <title>detect.html</title>
+  <meta charset = "UTF-8" />
+  <style type = "text/css">
+    .supported {
+      color: green;
+      border: 1px solid green;
+    }
+    .noSupport {
+      color: white;
+      background-color: red;
+    } 
+    li {
+      width: 20em;
+    }
+  </style>
+  <script type = "text/javascript"
+          src = "modernizr-1.6.min.js"></script>
+
+  <script type = "text/javascript">
+  //<![CDATA[
+
+  function detect(){
+    checkVisual();
+    checkForm();
+    checkProg();
+    //checkDateTimeLocal();
+  } // end detect
+
+  function checkVisual(){
+    //visual elements
+    check("audio");
+    check("audio.m4a");
+    check("audio.mp3");
+    check("audio.ogg");
+    check("audio.wav");
+    check("backgroundsize");
+    check("borderimage");
+    check("borderradius");
+    check("boxshadow");
+    check("canvas");
+    check("canvastext");
+    check("cssanimations");
+    check("csscolumns");
+    check("cssgradients");
+    check("cssreflections");
+    check("csstransforms");
+    check("csstransforms3d");
+    check("csstransitions");
+    check("flexbox");
+    check("fontface");
+    check("hsla");
+    check("inlinesvg");
+    check("multibgs");
+    check("opacity");
+    check("rgba");
+    check("smil");
+    check("svg");
+    check("svgclippaths");
+    check("textshadow");
+    check("video");
+    check("video.h264");
+    check("video.ogg");
+    check("webgl");
+  } // end checkVisual
+
+  function checkForm(){
+    //form elements
+    check("input.autocomplete");
+    check("input.autofocus");
+    check("input.list");
+    check("input.max");
+    check("input.min");
+    check("input.multiple");
+    check("input.pattern");
+    check("input.placeholder");
+    check("input.required");
+    check("input.step");
+    check("inputtypes");
+    check("inputtypes.color");
+    check("inputtypes.date");
+    check("inputtypes.datetime");
+    //This one causes problems - see checkDateTimeLocal()
+    //check("inputtypes.datetime-local");
+    check("inputtypes.email");
+    check("inputtypes.month");
+    check("inputtypes.number");
+    check("inputtypes.range");
+    check("inputtypes.search");
+    check("inputtypes.tel");
+    check("inputtypes.time");
+    check("inputtypes.url");
+    check("inputtypes.week");
+  } // end checkForm
+
+  function checkProg(){
+    //programming elements
+    check("applicationcache");
+    check("draganddrop");
+    check("geolocation");
+    check("hashchange");
+    check("history");
+    check("indexeddb");
+    check("localstorage");
+    check("postmessage");
+    check("sessionstorage");
+    check("touch");
+    check("websockets");
+    check("websqldatabase");
+    check("webworkers");
+  } // end checkProg
+
+  function check(feature){
+    test = eval("Modernizr." + feature);
+    if (test){
+      document.getElementById(feature).className = "supported";
+    } else {
+      document.getElementById(feature).className = "noSupport";
+    } // end if
+  } // end check
+  
+  function checkDateTimeLocal(){
+    //the dash in this property causes no end of problems
+    //with automated scripts. Hit this one by hand.
+    if (Modernizr.datetime-local){
+      document.getElementById("datetime-local").className = "supported";
+    } // end if
+  } // end checkDateTimeLocal
+
+  //]]>
+  </script>
+</head>
+
+<body onload = "detect()">
+  <h1>Detect HTML5 Features</h1>
+  <p>Your current browser supports the following
+     HTML5 features: (supported features are in green)
+  </p>
+  <h2>Visual Elements</h2>
+  <ul>
+    <li id = "audio">audio</li>
+    <li id = "audio.m4a">audio.m4a</li>
+    <li id = "audio.mp3">audio.mp3</li>
+    <li id = "audio.ogg">audio.ogg</li>
+    <li id = "audio.wav">audio.wav</li>
+    <li id = "backgroundsize">backgroundsize</li>
+    <li id = "borderimage">borderimage</li>
+    <li id = "borderradius">borderradius</li>
+    <li id = "boxshadow">boxshadow</li>
+    <li id = "canvas">canvas</li>
+    <li id = "canvastext">canvastext</li>
+    <li id = "cssanimations">cssanimations</li>
+    <li id = "csscolumns">csscolumns</li>
+    <li id = "cssgradients">cssgradients</li>
+    <li id = "cssreflections">cssreflections</li>
+    <li id = "csstransforms">csstransforms</li>
+    <li id = "csstransforms3d">csstransforms3d</li>
+    <li id = "csstransitions">csstransitions</li>
+    <li id = "flexbox">flexbox</li>
+    <li id = "fontface">fontface</li>
+    <li id = "hsla">hsla</li>
+    <li id = "inlinesvg">inlinesvg</li>
+    <li id = "multibgs">multibgs</li>
+    <li id = "opacity">opacity</li>
+    <li id = "rgba">rgba</li>
+    <li id = "smil">smil</li>
+    <li id = "svg">svg</li>
+    <li id = "svgclippaths">svgclippaths</li>
+    <li id = "textshadow">textshadow</li>
+    <li id = "video">video</li>
+    <li id = "video.h264">video.h264</li>
+    <li id = "video.ogg">video.ogg</li>
+    <li id = "webgl">webgl</li>
+  </ul>
+
+<h2>Form Elements</h2>
+  <ul>
+    <li id = "input.autocomplete">input.autocomplete</li>
+    <li id = "input.autofocus">input.autofocus</li>
+    <li id = "input.list">input.list</li>
+    <li id = "input.max">input.max</li>
+    <li id = "input.min">input.min</li>
+    <li id = "input.multiple">input.multiple</li>
+    <li id = "input.pattern">input.pattern</li>
+    <li id = "input.placeholder">input.placeholder</li>
+    <li id = "input.required">input.required</li>
+    <li id = "input.step">input.step</li>
+    <li id = "inputtypes">inputtypes</li>
+    <li id = "inputtypes.color">inputtypes.color</li>
+    <li id = "inputtypes.date">inputtypes.date</li>
+    <li id = "inputtypes.datetime">inputtypes.datetime</li>
+    <!-- skip datetime-local. It's too much trouble
+    <li id = "inputtypes.datetime-local">inputtypes.datetime-local</li>
+    -->
+    <li id = "inputtypes.email">inputtypes.email</li>
+    <li id = "inputtypes.month">inputtypes.month</li>
+    <li id = "inputtypes.number">inputtypes.number</li>
+    <li id = "inputtypes.range">inputtypes.range</li>
+    <li id = "inputtypes.search">inputtypes.search</li>
+    <li id = "inputtypes.tel">inputtypes.tel</li>
+    <li id = "inputtypes.time">inputtypes.time</li>
+    <li id = "inputtypes.url">inputtypes.url</li>
+    <li id = "inputtypes.week">inputtypes.week</li>
+  </ul>
+
+<h2>Programming Elements</h2>
+  <ul>
+    <li id = "applicationcache">applicationcache</li>
+    <li id = "draganddrop">draganddrop</li>
+    <li id = "geolocation">geolocation</li>
+    <li id = "hashchange">hashchange</li>
+    <li id = "history">history</li>
+    <li id = "indexeddb">indexeddb</li>
+    <li id = "localstorage">localstorage</li>
+    <li id = "postmessage">postmessage</li>
+    <li id = "sessionstorage">sessionstorage</li>
+    <li id = "touch">touch</li>
+    <li id = "websockets">websockets</li>
+    <li id = "websqldatabase">websqldatabase</li>
+    <li id = "webworkers">webworkers</li>
+  </ul>
+
+<!-- full list of modernizr properties
+
+<h2>Visual Elements</h2>
+audio
+audio.m4a
+audio.mp3
+audio.ogg
+audio.wav
+backgroundsize
+borderimage
+borderradius
+boxshadow
+canvas
+canvastext
+cssanimations
+csscolumns
+cssgradients
+cssreflections
+csstransforms
+csstransforms3d
+csstransitions
+flexbox
+fontface
+hsla
+inlinesvg
+multibgs
+opacity
+rgba
+smil
+svg
+svgclippaths
+textshadow
+video
+video.h264
+video.ogg
+webgl
+
+<h2>Programming Elements</h2>
+applicationcache
+draganddrop
+geolocation
+hashchange
+history
+indexeddb
+localstorage
+postmessage
+sessionstorage
+touch
+websockets
+websqldatabase
+webworkers
+
+<h2>Forms</h2>
+input.autocomplete
+input.autofocus
+input.list
+input.max
+input.min
+input.multiple
+input.pattern
+input.placeholder
+input.required
+input.step
+inputtypes
+inputtypes.color
+inputtypes.date
+inputtypes.datetime
+inputtypes.datetime-local
+inputtypes.email
+inputtypes.month
+inputtypes.number
+inputtypes.range
+inputtypes.search
+inputtypes.tel
+inputtypes.time
+inputtypes.url
+inputtypes.week
+
+-->
+
+
+</body>
+</html>

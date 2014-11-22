@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+#paper {
+background-color:#FFF3CC;
+border:#DFBC6A 1px solid;
+width:100px; 
+height:100px; 
+padding:8px;
+font-size:18px;
+text-align:center;
+}
+#recycle_bin {
+background-color:#CCC; 
+width:200px; 
+height:200px;
+padding:8px;
+font-size:18px;
+text-align:center; 
+}
+</style>
+<script type="text/javascript">
+var isRecycled = false;
+function appStatus(msg){
+    document.getElementById('app_status').innerHTML = msg;
+}
+// "e" represents the drag event in question for each drag function
+function drag_start(e) {
+    appStatus("Dragging the "+e.target.getAttribute('id'));
+    e.dataTransfer.dropEffect='move';
+    e.dataTransfer.setData("text/plain", e.target.getAttribute('id'));
+}
+function drag_enter(e) {
+    appStatus("You are dragging over the "+e.target.getAttribute('id'));
+}
+function drag_leave(e) {
+    appStatus("You left the "+e.target.getAttribute('id'));
+}
+function drag_drop(e) {
+    var element = e.dataTransfer.getData("Text");
+    appStatus("Dropped "+element+" into the "+e.target.getAttribute('id'));
+    e.target.appendChild(document.getElementById(element));
+    isRecycled = true;
+    document.getElementById(element).removeAttribute("draggable");
+}
+function drag_end(e) {
+    var status = document.getElementById('app_status');
+    if(isRecycled == false){
+        appStatus("You let the "+e.target.getAttribute('id')+" go.");
+    }
+}
+</script>
+</head>
+<body>
+<h2>HTML5 Drag and Drop Demo - DevelopPHP.com</h2>
+<h3 id="app_status">App status area ready...</h3>
+<div id="recycle_bin" ondragenter="drag_enter(event)" ondrop="drag_drop(event)" ondragover="return false" ondragleave="drag_leave(event)" >
+Recycle Bin
+</div>
+<hr />
+<div id="paper" draggable="true" ondragstart="drag_start(event)" ondragend="drag_end(event)">
+Paper
+</div>
+</body>
+</html>
